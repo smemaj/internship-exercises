@@ -14,7 +14,7 @@ A description for each exercise
 - After finishing the survey you get the results for the user that took it
 - After finishing you can enter another user to complete the survey again
 
-## Session 2 - Queries
+## Session 3 - Queries
 
 - All five sql queries completed
 - For question 4 the dates are hardcoded
