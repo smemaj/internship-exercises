@@ -103,9 +103,10 @@ public class Main {
 //        SurveyResult surveyResult2 = new SurveyResult(survey, c2, result);
 //        System.out.println(surveyResult1);
 //        System.out.println(surveyResult2);
+        System.out.println("Welcome to Survey Application...");
 
         while (true){
-            System.out.println("Welcome to Survey Application...");
+
             System.out.println("Enter your candidate data to take survey: ");
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter first name: ");
@@ -114,7 +115,8 @@ public class Main {
             String lname = scanner.nextLine();
             Candidate candidate = new Candidate();
             Integer check=0;
-            //while true
+
+
             for(Candidate c:candidateList){
                 if(c.getFirstName().equals(fname)&&c.getLastName().equals(lname)){
                     check=1;
@@ -124,24 +126,29 @@ public class Main {
                     Map<Question, Answer> questionAnswerMap = new HashMap<>();
 
 
-                    for(Question q:survey.getQuestionList()){
-                        System.out.println("Question "+ q.getIndex());
+                    for(Question q:survey.getQuestionList()) {
+                        System.out.println("Question " + q.getIndex());
                         System.out.println(q.getQuestionDescription());
+                        while (true) {
                         String answer = scanner.nextLine();
-                        //while true
-                        if(answer.equalsIgnoreCase(Answer.AGREE.name())){
-                            questionAnswerMap.put(q, Answer.AGREE);
-                        } else if (answer.equalsIgnoreCase(Answer.SLIGHLTY_AGREE.name())) {
-                            questionAnswerMap.put(q, Answer.SLIGHLTY_AGREE);
-                        } else if (answer.equalsIgnoreCase(Answer.SLIGHTLY_DISAGREE.name())) {
-                            questionAnswerMap.put(q, Answer.SLIGHTLY_DISAGREE);
-                        } else if (answer.equalsIgnoreCase(Answer.DISAGREE.name())) {
-                            questionAnswerMap.put(q, Answer.DISAGREE);
-                        }else {
-                            System.out.println("Not valid answer. ");
+
+                            if (answer.equalsIgnoreCase(Answer.AGREE.name())) {
+                                questionAnswerMap.put(q, Answer.AGREE);
+                                break;
+                            } else if (answer.equalsIgnoreCase(Answer.SLIGHLTY_AGREE.name())) {
+                                questionAnswerMap.put(q, Answer.SLIGHLTY_AGREE);
+                                break;
+                            } else if (answer.equalsIgnoreCase(Answer.SLIGHTLY_DISAGREE.name())) {
+                                questionAnswerMap.put(q, Answer.SLIGHTLY_DISAGREE);
+                                break;
+                            } else if (answer.equalsIgnoreCase(Answer.DISAGREE.name())) {
+                                questionAnswerMap.put(q, Answer.DISAGREE);
+                                break;
+                            } else {
+                                System.out.println("Not valid answer. ");
+                            }
                         }
                     }
-
                     SurveyResult surveyResult = new SurveyResult(survey, candidate, questionAnswerMap);
                     surveyResultList.add(surveyResult);
                     break;
@@ -156,6 +163,5 @@ public class Main {
         }
 
     }
-
 
 }
