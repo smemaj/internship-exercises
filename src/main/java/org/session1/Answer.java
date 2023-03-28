@@ -4,7 +4,7 @@ public enum Answer {
 
     AGREE,
 
-    SLIGHLTY_AGREE,
+    SLIGHTLY_AGREE,
 
     SLIGHTLY_DISAGREE,
 

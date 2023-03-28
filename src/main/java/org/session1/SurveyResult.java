@@ -24,12 +24,18 @@ public class SurveyResult {
         return survey;
     }
 
-    public Map<Question, Answer> candidateResults (Candidate candidate){
-        Map<Question, Answer> placeholder = new HashMap<>();
+    public void candidateResults (Candidate candidate){
+
+        System.out.println("Results for candidate " + candidate.getFirstName() + " " + candidate.getLastName());
+
         if (candidate.getFirstName().equals(this.candidate.getFirstName())){
-            return this.getResults();
+
+            for (Map.Entry<Question, Answer> entry : this.getResults().entrySet()) {
+                Question question = entry.getKey();
+                Answer answer = entry.getValue();
+                System.out.println(question.getQuestionDescription() + " " + answer.name().replace('_', ' '));
+            }
         }
-        return placeholder;
     }
 
     public void setSurvey(Survey survey) {

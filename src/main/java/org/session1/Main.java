@@ -123,22 +123,24 @@ public class Main {
                     System.out.println("Valid candidate. Please continue to the survey");
                     candidate=c;
                     System.out.println("Please choose an answer for each question.");
+                    System.out.println("answer name: "+ Answer.SLIGHTLY_AGREE.name().replace('_',' '));
                     Map<Question, Answer> questionAnswerMap = new HashMap<>();
 
 
                     for(Question q:survey.getQuestionList()) {
                         System.out.println("Question " + q.getIndex());
                         System.out.println(q.getQuestionDescription());
+                        System.out.println("Agree   Disagree   Slightly Agree   Slightly Disagree");
                         while (true) {
                         String answer = scanner.nextLine();
 
                             if (answer.equalsIgnoreCase(Answer.AGREE.name())) {
                                 questionAnswerMap.put(q, Answer.AGREE);
                                 break;
-                            } else if (answer.equalsIgnoreCase(Answer.SLIGHLTY_AGREE.name())) {
-                                questionAnswerMap.put(q, Answer.SLIGHLTY_AGREE);
+                            } else if (answer.equalsIgnoreCase(Answer.SLIGHTLY_AGREE.name().replace('_',' '))) {
+                                questionAnswerMap.put(q, Answer.SLIGHTLY_AGREE);
                                 break;
-                            } else if (answer.equalsIgnoreCase(Answer.SLIGHTLY_DISAGREE.name())) {
+                            } else if (answer.equalsIgnoreCase(Answer.SLIGHTLY_DISAGREE.name().replace('_',' '))) {
                                 questionAnswerMap.put(q, Answer.SLIGHTLY_DISAGREE);
                                 break;
                             } else if (answer.equalsIgnoreCase(Answer.DISAGREE.name())) {
@@ -151,6 +153,7 @@ public class Main {
                     }
                     SurveyResult surveyResult = new SurveyResult(survey, candidate, questionAnswerMap);
                     surveyResultList.add(surveyResult);
+                    surveyResult.candidateResults(candidate);
                     break;
                 }
             }
@@ -160,6 +163,8 @@ public class Main {
             }
 
             System.out.println("You have finished your survey!");
+
+
         }
 
     }
